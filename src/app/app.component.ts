@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { I18nPluralPipe } from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-checkout';
+  itemPluralMapping = {
+    'this': {
+      '=0': 'these',
+      '=1': 'this',
+      'other': 'these'
+    },
+    'item': {
+      '=0': 'items',
+      '=1': 'item',
+      'other': 'items'
+    }
+  };
 }
