@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LinkService } from "../services/link.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-form',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  code!: string;
 
-  constructor() { }
+  constructor(private linkService: LinkService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.code = this.route.snapshot.params['code'];
+    this.linkService.get(this.code).subscribe({
+      next: value => { console.log(value); }
+    });
   }
 
 }
